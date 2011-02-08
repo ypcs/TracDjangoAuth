@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name = "TracDjangoAuth",
-    version = "0.1.2",
+    version = "0.1.3",
     author = "Ville Korhonen",
     author_email = "ville@xd.fi",
     url = "https://github.com/ypcs/TracDjangoAuth",
@@ -44,7 +44,7 @@ setup(
     
     entry_points = {
         'trac.plugins': [
-            'tracext.auth.django = tracdjangoauth.auth_django',
+            'tracdjangoauth.auth_django = tracdjangoauth.auth_django',
         ]
     },
 )
