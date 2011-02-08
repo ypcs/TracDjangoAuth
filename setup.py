@@ -4,11 +4,11 @@ from setuptools import setup
 
 setup(
     name = "TracDjangoAuth",
-    version = "0.1.1",
+    version = "0.1.2",
     author = "Ville Korhonen",
     author_email = "ville@xd.fi",
     url = "https://github.com/ypcs/TracDjangoAuth",
-    #download_url = "https://github.com/ypcs/TracDjangoAuth/..."
+    download_url = "https://github.com/ypcs/TracDjangoAuth/tarball/master"
     description = "Trac Authentication against Django's userdb",
     
     keywords = [
