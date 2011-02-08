@@ -3,11 +3,9 @@ Trac Authentication against Django's userdb
 (c) 2011 Ville Korhonen <ville@xd.fi>
 
 
+Plugin which allows you to authenticate your Trac users against Django's user database.
+
+For installation instructions: see INSTALL.
 
 
-Note: You MUST set environment variable DJANGO_SETTINGS_MODULE to make this plugin work.
-
-
-tracd: DJANGO_SETTINGS_MODULE="myproject.settings" tracd <params>
-
-
+GPLv2, sources @ https://github.com/ypcs/TracDjangoAuth
