@@ -8,7 +8,7 @@ setup(
     author = "Ville Korhonen",
     author_email = "ville@xd.fi",
     url = "https://github.com/ypcs/TracDjangoAuth",
-    download_url = "https://github.com/ypcs/TracDjangoAuth/tarball/master"
+    download_url = "https://github.com/ypcs/TracDjangoAuth/tarball/master",
     description = "Trac Authentication against Django's userdb",
     
     keywords = [
