@@ -8,7 +8,10 @@ INSTALL
  - NB: TracAccountManager plugin is REQUIRED
  - NB: Working Django installation is REQUIRED
 
-Loading Django modules fails if DJANGO_SETTINGS_MODULE environment variable is not set refer to mod_python/mod_wsgi/tracd/<put your webserver here> manual on how to set environment variables on your system.
+Loading Django modules fails if DJANGO_SETTINGS_MODULE
+environment variable is not set refer to mod_python/
+mod_wsgi/tracd/<put your webserver here> manual on how
+to set environment variables on your system.
 
 
 Your Django project should be in PYTHONPATH.
@@ -20,7 +23,9 @@ Installing package:
  OR
  - easy_install TracDjangoAuth
  OR
- - download TracDjangoAuth archive, unzip, python setup.py install OR python setup.py bdist_egg and copy dist/*.egg to plugins -directory inside your Trac environment
+ - download TracDjangoAuth archive, unzip, python setup.py install
+   OR python setup.py bdist_egg and copy dist/*.egg to
+   plugins -directory inside your Trac environment
  
  
 Configuration:
@@ -34,7 +39,8 @@ Edit trac.ini:
 
  [account-manager]
  password_store = DjangoPasswordStore
- require_group = Trac                   ; optional, in which Django group user must be to be authenticated
+ require_group = Trac                   ; optional, to which Django group user
+                                        ; must belong to be authenticated
 
 
 
