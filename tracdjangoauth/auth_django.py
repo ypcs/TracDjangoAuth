@@ -125,7 +125,7 @@ class DjangoPasswordStore(Component):
         db.reset_queries()
         try:
             try:
-                duser = User.objects.get( Q(is_active=True) && ( Q(username=user) || Q(email=user) ) )
+                duser = User.objects.get( Q(is_active=True) & ( Q(username=user) | Q(email=user) ) )
                                     
                 # TODO: tarkista ryhmä jos asetettu (eli != "")
                 group = str(self.require_group)
