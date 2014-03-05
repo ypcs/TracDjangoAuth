@@ -40,6 +40,7 @@ if os.environ.has_key('DJANGO_SETTINGS_MODULE'):
 
 from django import db
 from django.contrib.auth.models import User
+from django.db.models import Q
 
 # Loading Django modules fails if DJANGO_SETTINGS_MODULE
 # environment variable is not set refer to mod_python/
@@ -100,6 +101,7 @@ class DjangoPasswordStore(Component):
     def delete_user(self, user):
         """Deletes specified user from Django's userdb"""
         self.log.debug('acct_mgr: deleting user...')
+        raise NotImplementedError
         duser = self._get_user(user=user)
         if duser:
             duser.delete()
@@ -123,7 +125,7 @@ class DjangoPasswordStore(Component):
         db.reset_queries()
         try:
             try:
-                duser = User.objects.get(username=user, is_active=True)
+                duser = User.objects.get( Q(is_active=True) && ( Q(username=user) || Q(email=user) ) )
                                     
                 # TODO: tarkista ryhmä jos asetettu (eli != "")
                 group = str(self.require_group)
