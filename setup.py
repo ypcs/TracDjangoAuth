@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name = "TracDjangoAuth",
-    version = "0.1.3",
+    version = "0.2",
     author = "Ville Korhonen",
     author_email = "ville@xd.fi",
     url = "https://github.com/ypcs/TracDjangoAuth",
@@ -30,7 +30,7 @@ setup(
     ],
 
     classifiers = [
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 4 - Beta",
         "Environment :: Other Environment",
         "Framework :: Django",
         "Framework :: Trac",
