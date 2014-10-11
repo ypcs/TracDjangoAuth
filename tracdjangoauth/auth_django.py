@@ -66,7 +66,6 @@ class DjangoPasswordStore(Component):
     user must belong to be able to login
     """
     implements(IPasswordStore)
- 
     settings_module = Option('account-manager', 'django_settings_module', '', \
         doc=_("Name of Django settings module"))
 
@@ -109,7 +108,7 @@ class DjangoPasswordStore(Component):
 
     def _get_user(self, user, password=None):
         """Gets specified user from Django's userdb
-        
+ 
         If setting django_required_group is defined, user MUST
                 be in that group
         If password is specified, also checks it.
@@ -124,25 +123,22 @@ class DjangoPasswordStore(Component):
         db.reset_queries()
         try:
             try:
-                duser = User.objects.get(Q(is_active=True) & (Q(username=user) | Q(email=user)))
-                                    
+                duser = User.objects.get(Q(is_active=True) & \
+                    (Q(username=user) | Q(email=user)))
                 group = str(self.require_group)
                 if group != "":
                     if duser.groups.filter(name=group).count() == 0:
                         return False
-                
                 if password and duser.check_password(password):
                     return duser
                 elif password is None:
                     return duser
                 else:
                     return False
-            
             except User.DoesNotExist:
                 return None
         finally:
             db.connection.close()
-        
         return None
 
     def check_password(self, user, password):
@@ -156,4 +152,3 @@ class DjangoPasswordStore(Component):
         else:
             self.log.debug('acct_mgr: user %s NOT authenticated' % user)
             return False
-            
