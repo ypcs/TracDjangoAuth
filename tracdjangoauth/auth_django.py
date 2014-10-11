@@ -87,7 +87,7 @@ class DjangoPasswordStore(Component):
         raise NotImplementedError
         return []
 
-    def set_password(self, user, password, old_password = None):
+    def set_password(self, user, password, old_password=None):
         """Sets user password"""
         self.log.debug('acct_mgr: setting password...')
         duser = self._get_user(user=user, password=old_password)
@@ -127,7 +127,6 @@ class DjangoPasswordStore(Component):
             try:
                 duser = User.objects.get( Q(is_active=True) & ( Q(username=user) | Q(email=user) ) )
                                     
-                # TODO: tarkista ryhmä jos asetettu (eli != "")
                 group = str(self.require_group)
                 if group != "":
                     if duser.groups.filter(name=group).count() == 0:
