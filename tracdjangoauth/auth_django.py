@@ -39,7 +39,19 @@ if os.environ.has_key('DJANGO_SETTINGS_MODULE'):
     __import__(os.environ['DJANGO_SETTINGS_MODULE'])
 
 from django import db
-from django.contrib.auth.models import User
+
+## This does not work with a custom user model:
+## # from django.contrib.auth.models import User
+## so we try the newer api first and fall back to
+## the old fixed User import if that fails
+try:
+    from django.contrib.auth import get_user_model
+    User = get_user_model()
+    username_field = User.USERNAME_FIELD
+except ImportError:
+    from django.contrib.auth.models import User
+    username_field = 'username'
+
 from django.db.models import Q
 
 # Loading Django modules fails if DJANGO_SETTINGS_MODULE
@@ -125,7 +137,7 @@ class DjangoPasswordStore(Component):
         db.reset_queries()
         try:
             try:
-                duser = User.objects.get( Q(is_active=True) & ( Q(username=user) | Q(email=user) ) )
+                duser = User.objects.get( Q(is_active=True) & ( Q(**{username_field: user}) | Q(email=user) ) )
                                     
                 # TODO: tarkista ryhmä jos asetettu (eli != "")
                 group = str(self.require_group)
