@@ -6,7 +6,7 @@ from setuptools import setup
 
 setup(
     name="TracDjangoAuth",
-    version="0.3",
+    version="0.3.1",
     author="Ville Korhonen",
     author_email="ville@xd.fi",
     url="https://github.com/ypcs/TracDjangoAuth",
