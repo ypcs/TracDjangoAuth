@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+"""TracDjangoAuth, setuptools configuration file"""
+
 from setuptools import setup
 
 setup(
