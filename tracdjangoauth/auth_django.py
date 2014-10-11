@@ -124,7 +124,7 @@ class DjangoPasswordStore(Component):
         db.reset_queries()
         try:
             try:
-                duser = User.objects.get( Q(is_active=True) & ( Q(username=user) | Q(email=user) ) )
+                duser = User.objects.get(Q(is_active=True) & (Q(username=user) | Q(email=user)))
                                     
                 group = str(self.require_group)
                 if group != "":
