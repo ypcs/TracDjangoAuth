@@ -76,7 +76,7 @@ class DjangoPasswordStore(Component):
     def has_user(self, user):
         # TODO
         raise NotImplementedError
-        return user in self.get_users()
+        #return user in self.get_users()
 
     def get_users(self):
         """Returns list of available users
@@ -85,7 +85,7 @@ class DjangoPasswordStore(Component):
         # TODO
         self.log.debug('acct_mgr: getting user list...')
         raise NotImplementedError
-        return []
+        #return []
 
     def set_password(self, user, password, old_password=None):
         """Sets user password"""
@@ -101,11 +101,11 @@ class DjangoPasswordStore(Component):
         """Deletes specified user from Django's userdb"""
         self.log.debug('acct_mgr: deleting user...')
         raise NotImplementedError
-        duser = self._get_user(user=user)
-        if duser:
-            duser.delete()
-            return True
-        return False
+        #duser = self._get_user(user=user)
+        #if duser:
+        #    duser.delete()
+        #    return True
+        #return False
 
     def _get_user(self, user, password=None):
         """Gets specified user from Django's userdb
