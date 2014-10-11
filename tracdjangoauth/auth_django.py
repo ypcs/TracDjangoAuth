@@ -2,17 +2,17 @@
 #
 # TracDjangoAuth - Trac Authentication against Django's userdb
 # Copyright (c) 2011 Ville Korhonen <ville@xd.fi>
-# 
+#
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
 # as published by the Free Software Foundation; either version 2
 # of the License, or (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor,
@@ -32,7 +32,7 @@ from acct_mgr.api import IPasswordStore
 try:
     from acct_mgr.api import _
 except ImportError:
-    _ = lambda x:x
+    _ = lambda x: x
 
 # load settings module, for example myproject.settings
 if os.environ.has_key('DJANGO_SETTINGS_MODULE'):
@@ -53,25 +53,25 @@ class DjangoPasswordStore(Component):
     """Manages user accounts stored in Django's database (User-models).
 
     To use this implementation add the following configuration section to
-    trac.ini:
-    
+    trac.ini.
+
     {{{
     [account-manager]
     password_store = DjangoPasswordStore
     django_settings_module = myproject.settings
     django_require_group = Trac
     }}}
-    
+
     django_require_group is optional, it specifies which Django group \
     user must belong to be able to login
     """
     implements(IPasswordStore)
-    
-    settings_module = Option('account-manager', 'django_settings_module', '',
-        doc = _("Name of Django settings module"))
-    
-    require_group = Option('account-manager', 'django_require_group', '',
-        doc = _("Name of required Django group"))
+ 
+    settings_module = Option('account-manager', 'django_settings_module', '', \
+        doc=_("Name of Django settings module"))
+
+    require_group = Option('account-manager', 'django_require_group', '', \
+        doc=_("Name of required Django group"))
 
     def has_user(self, user):
         # TODO
@@ -91,7 +91,6 @@ class DjangoPasswordStore(Component):
         """Sets user password"""
         self.log.debug('acct_mgr: setting password...')
         duser = self._get_user(user=user, password=old_password)
-        
         if duser:
             duser.set_password(password)
             duser.save()
