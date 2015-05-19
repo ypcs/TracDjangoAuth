@@ -34,10 +34,17 @@ try:
 except ImportError:
     _ = lambda x: x
 
-# load settings module, for example myproject.settings
+# Specify your Django project in the DJANGO_SETTINGS_MODULE 
+# environment varible and ensure it is in the PYTHONPATH.
+#
+# Refer to the instructions for 
+# mod_python/mod_wsgi/tracd/<your webserver>
+# on how to set environment variables.
+#
 if os.environ.has_key('DJANGO_SETTINGS_MODULE'):
     __import__(os.environ['DJANGO_SETTINGS_MODULE'])
 
+import django
 from django import db
 
 ## This does not work with a custom user model:
@@ -54,12 +61,9 @@ except ImportError:
 
 from django.db.models import Q
 
-# Loading Django modules fails if DJANGO_SETTINGS_MODULE
-# environment variable is not set refer to mod_python/
-# mod_wsgi/tracd/<put your webserver here> instructions
-# on how to set environment variables on your system
-#
-# Your Django project should be in PYTHONPATH
+# initialize Django 1.7+
+if hasattr(django, 'setup'):
+    django.setup()
 
 class DjangoPasswordStore(Component):
     """Manages user accounts stored in Django's database (User-models).
