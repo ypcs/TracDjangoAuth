@@ -1,0 +1,31 @@
+sudo: false
+language: python
+python:
+    - "2.7"
+    - "2.8"
+    - "3.4"
+    - "3.5"
+env:
+    matrix:
+        django:
+            - 1.7
+            - 1.8
+            - 1.9
+            - 1.10
+        trac:
+            - <0.12
+            - <1.0
+            - >=1.0
+        tracaccountmanager:
+            - >=0.2
+cache:
+    directories:
+        - $HOME/.cache/pip
+install:
+    - pip install .
+    - pip install flake8 coverage coveralls
+script:
+    - flake8 tracdjangoauth
+after_success:
+    - coverage report
+    - coveralls
