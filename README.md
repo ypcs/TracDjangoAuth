@@ -9,4 +9,9 @@ against Django's user database.
 For installation instructions: see INSTALL.
 
 
+    pip install TracDjangoAuth
+
+
+See https://pypi.python.org/pypi/TracDjangoAuth
+
 GPLv2, sources @ https://github.com/ypcs/TracDjangoAuth
