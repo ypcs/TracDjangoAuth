@@ -47,6 +47,10 @@ if os.environ.has_key('DJANGO_SETTINGS_MODULE'):
 import django
 from django import db
 
+# initialize Django 1.7+
+if hasattr(django, 'setup'):
+    django.setup()
+
 ## This does not work with a custom user model:
 ## # from django.contrib.auth.models import User
 ## so we try the newer api first and fall back to
@@ -60,10 +64,6 @@ except ImportError:
     username_field = 'username'
 
 from django.db.models import Q
-
-# initialize Django 1.7+
-if hasattr(django, 'setup'):
-    django.setup()
 
 class DjangoPasswordStore(Component):
     """Manages user accounts stored in Django's database (User-models).
